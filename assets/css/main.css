@@ -117,10 +117,6 @@
   src: local("Helvetica Neue Bold"),local(HelveticaNeue-Bold),local("Helvetica Bold"),local(Helvetica-Bold);
 }
 
-.site-header, .home, .site-footer {
-  display: none;
-}
-
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 /**

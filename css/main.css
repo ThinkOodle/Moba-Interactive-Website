@@ -1,9 +1,3 @@
-.site-header,
-.home,
-.site-footer {
-  display: none;
-}
-
 @import "normalize.css";
 @import "outdated-browser/outdatedbrowser/outdatedbrowser.css";
 
