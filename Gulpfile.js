@@ -16,6 +16,15 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    globby = require('globby'),
+    through = require('through2'),
+    gutil = require('gulp-util'),
+    sourcemaps = require('gulp-sourcemaps'),
+    reactify = require('reactify'),
+    concatenify = require('concatenify'),
 
     // HTML
     htmlmin = require('gulp-htmlmin'),
@@ -35,18 +44,21 @@ var gulp = require('gulp'),
     var atImport = require("postcss-import");
     var fontMagician = require("postcss-font-magician");
 
+    var ghPages = require('gulp-gh-pages');
 
-var dist              = '/'
-    , dirPublic       = '/'
-    , distAssets      = dist + dirPublic + 'assets/'
-    , distStylesheets = '_site/css/'
+
+var dist              = './app/'
+    , distAssets      = dist + 'assets/'
+    , distStylesheets = distAssets + 'css/'
     , distJavascripts = distAssets + 'js/'
     , distImages      = distAssets + 'img/'
 
     , deploy          = '_site/'
+    , deployStylesheets = deploy + 'assets/css'
+    , deployJavascripts = deploy + 'assets/js'
 
-    , src = ''
-    , srcStylesheets = src + 'pcss/'
+    , src = 'app/'
+    , srcStylesheets = src + 'css/'
     , srcJavascripts = src + 'js/'
     , srcTemplates   = src + 'templates/'
 ;
@@ -60,10 +72,10 @@ gulp.task('css', function () {
     cssnext,
     precss
   ];
-  return gulp.src('./pcss/*.css')
+  return gulp.src(path.join(srcStylesheets, '*.css'))
     .pipe(postcss(processors))
-    .pipe(gulp.dest('./css'))
     .pipe(gulp.dest(distStylesheets))
+    .pipe(gulp.dest(deployStylesheets))
     .pipe(browserSync.reload({stream:true, once: true}));
 });
 
@@ -102,12 +114,20 @@ gulp.task('bs-reload', function () {
 // Concatenate & JS build
 // <--
 gulp.task('js', function () {
-    gulp.src([srcJavascripts + 'plugins.js', srcJavascripts + 'main.js'])
-        .pipe(concat(pkg.name + '.js'))
+    gulp.src([
+      './node_modules/outdated-browser/outdatedbrowser/outdatedbrowser.js',
+      srcJavascripts + 'main.js'
+    ])
+        .pipe(concat('main.js'))
         .pipe(gulp.dest(distJavascripts))
-        .pipe(rename(pkg.name + '.min.js'))
+        .pipe(rename('main.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest(distJavascripts));
+});
+
+gulp.task('deploy', ['jekyll'], function() {
+  return gulp.src('./_site/**/*')
+    .pipe(ghPages());
 });
 
 // -->
@@ -131,8 +151,8 @@ gulp.task('default', ['css', 'js', 'html', 'browser-sync'], function (event) {
     gulp.watch(srcStylesheets+"**", ['css']);
     --> HTML
     gulp.watch([
-        '*.html',
-        '*/*.md'
+        src + '*.html',
+        src + '*/*.md'
     ], ['html']);
     // --> Ruby
     gulp.watch(path.join(dist, '*/*.rb'), ['html']);

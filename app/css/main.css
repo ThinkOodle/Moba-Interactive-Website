@@ -5,6 +5,7 @@
 }
 
 @import "normalize.css";
+@import "outdated-browser/outdatedbrowser/outdatedbrowser.css";
 
 $light-grey: #aab0bd;
 $oodle-pink: #ef4471;
@@ -209,7 +210,7 @@ hr {
 }
 
 .copyright {
-  @extend .text-center;
+  text-align: center;
   font-size: .7rem;
   margin-top: 0;
 }
