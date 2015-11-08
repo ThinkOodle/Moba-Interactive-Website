@@ -43,6 +43,8 @@ var gulp = require('gulp'),
     var pxtorem = require('postcss-pxtorem');
     var atImport = require("postcss-import");
     var fontMagician = require("postcss-font-magician");
+    var cssnano = require('cssnano');
+    var discardComments = require('postcss-discard-comments');
 
     var ghPages = require('gulp-gh-pages');
 
@@ -70,7 +72,9 @@ gulp.task('css', function () {
     lost,
     autoprefixer,
     cssnext,
-    precss
+    precss,
+    discardComments,
+    cssnano
   ];
   return gulp.src(path.join(srcStylesheets, '*.css'))
     .pipe(postcss(processors))

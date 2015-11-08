@@ -13,6 +13,7 @@
     "browserify": "^12.0.1",
     "browserify-shim": "^3.8.11",
     "concatenify": "^1.0.1",
+    "cssnano": "^3.3.2",
     "cssnext": "^1.8.4",
     "globby": "^3.0.1",
     "gulp": "^3.9.0",
