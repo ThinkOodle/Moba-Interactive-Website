@@ -1,0 +1,66 @@
+---
+title: MOBA Interactive has joined the Oodle team!
+layout: default
+---
+<div class="oodle-dots-overlay">
+  <img src="{{ site.baseurl }}/images/oodle-dots-overlay.png" alt="Oodle Dots">
+</div>
+<div class="row">
+    <div class="logo-lockup">
+      <img src="{{ site.baseurl }}/images/moba-oodle-logo-lockup.png" alt="">
+    </div>
+</div>
+<div class="row vertically-center">
+  <div class="half text-right">
+    <h1 class="main-title">MOBA INTERACTIVE has joined the <br> <span class="text-pink">Oodle<sup>&trade;</sup> team!</span></h1>
+  </div>
+  <div class="half">
+    <a href="#" class="btn">Find Out More About This!</a>
+  </div>
+</div>
+<div class="row">
+  <div class="half">
+    <p class="descriptor-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut fringilla velit. Aliquam ante ante, gravida vel nibh at, congue sollicitudin risus. Phasellus ipsum tortor, aliquet vestibulum rutrum vel, placerat eu felis. Proin quis leo felis.
+    </p>
+  </div>
+  <div class="half">
+    <p class="descriptor-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut fringilla velit. Aliquam ante ante, gravida vel nibh at, congue sollicitudin risus. Phasellus ipsum tortor, aliquet vestibulum rutrum vel, placerat eu felis. Proin quis leo felis.
+    </p>
+  </div>
+  <hr>
+</div>
+<div class="row client-logos-title">
+  <h2>A Few of Our Clients</h2>
+</div>
+<div class="row client-logos">
+  <div class="one-fifth"><img src="{{ site.baseurl }}/images/client-logo-uc-health.jpg" alt="UC Health"></div>
+  <div class="one-fifth"><img src="{{ site.baseurl }}/images/client-logo-markettrack.jpg" alt="MarketTrack"></div>
+  <div class="one-fifth"><img src="{{ site.baseurl }}/images/client-logo-ferno.jpg" alt="Ferno"></div>
+  <div class="one-fifth"><img src="{{ site.baseurl }}/images/client-logo-childrens-hospital.jpg" alt="Cincinnati Children's Hospital"></div>
+  <div class="one-fifth"><img src="{{ site.baseurl }}/images/client-logo-nathans.jpg" alt="Nathan's Famous Hot Dogs"></div>
+</div>
+<p class="copyright">
+  &copy; 2015 Oodle. All Rights Reserved.
+</p>
+
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>

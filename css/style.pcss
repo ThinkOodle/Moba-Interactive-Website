@@ -1,0 +1,67 @@
+.home {
+  display: none;
+}
+
+/*Lost Shit*/
+
+.row {
+    *zoom: 1;
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row:before {
+  content: '';
+  display: table;
+}
+
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.main {
+    width: calc(99.99% * 3/5 - (1.618rem - 1.618rem * 3/5));
+}
+
+.main:nth-child(n) {
+  float: left;
+  margin-right: 1.618rem;
+  clear: none;
+}
+
+.main:last-child {
+  margin-right: 0;
+}
+
+.main:nth-child(5n) {
+  margin-right: 0;
+}
+
+.main:nth-child(5n + 1) {
+  clear: left;
+}
+
+.sidebar {
+    width: calc(99.99% * 2/5 - (1.618rem - 1.618rem * 2/5));
+}
+
+.sidebar:nth-child(n) {
+  float: left;
+  margin-right: 1.618rem;
+  clear: none;
+}
+
+.sidebar:last-child {
+  margin-right: 0;
+}
+
+.sidebar:nth-child(5n) {
+  margin-right: 0;
+}
+
+.sidebar:nth-child(5n + 1) {
+  clear: left;
+}
