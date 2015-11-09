@@ -12,8 +12,20 @@ $line-height-base: 1.428571429;
 $text-color: $light-grey;
 $body-bg: #fff;
 
+@custom-media --xs (max-width: 543px);
+@custom-media --sm-down (max-width: 767px);
+@custom-media --md-down (max-width: 991px);
+@custom-media --lg-down (max-width: 1199px);
+@custom-media --xl (min-width: 1200px);
+
 .main-title {
   margin: 0;
+
+  br {
+    @media (--md-down) {
+      display: none;
+    }
+  }
 }
 
 /*Lost Shit*/
@@ -59,12 +71,6 @@ textarea {
 //
 // Define the minimum and maximum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.*/
-
-@custom-media --xs (max-width: 543px);
-@custom-media --sm-down (max-width: 767px);
-@custom-media --md-down (max-width: 991px);
-@custom-media --lg-down (max-width: 1199px);
-@custom-media --xl (min-width: 1200px);
 
 .row {
   position: relative;
@@ -196,9 +202,10 @@ hr {
   position: relative;
   z-index: 1;
   margin-top: 0;
+  text-align: center;
 
   img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
   }
 }
